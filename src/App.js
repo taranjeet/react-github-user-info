@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Title, SearchForm } from './components';
 
 class App extends Component {
   render() {
@@ -8,7 +9,8 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <h2>Github User Info</h2>
+            <Title title={"Github User Info"} />
+            <SearchForm />
             <hr/>
           </div>
         </div>
