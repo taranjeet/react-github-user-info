@@ -4,6 +4,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Title, SearchForm } from './components';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="container">
