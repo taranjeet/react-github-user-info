@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { Button, Form, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
+import { UserCard } from './UserCard';
+
 class SearchForm extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            username: ''
+            username: '',
+            fullName: '',
+            avatarUrl: '',
+            publicRepos: '',
+            followers: 0,
+            following: 0
+
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -25,13 +33,27 @@ class SearchForm extends Component {
         fetch(`${this.apiUrl}/${this.state.username}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                const {
+                    name: fullName,
+                    avatar_url: avatarUrl,
+                    public_repos: publicRepos,
+                    followers,
+                    following,
+                } = data;
+                this.setState({
+                    fullName,
+                    avatarUrl,
+                    publicRepos,
+                    followers,
+                    following
+                })
             })
     }
 
     render() {
         let input;
         return (
+            <div>
             <Form onSubmit={this.handleSubmit}>
                 <InputGroup>
                     <Input
@@ -44,6 +66,13 @@ class SearchForm extends Component {
                     </InputGroupAddon>
                 </InputGroup>
             </Form>
+            <UserCard
+                fullname={this.state.fullName}
+                followers={this.state.followers}
+                following={this.state.following}
+                publicRepos={this.state.publicRepos}
+            />
+            </div>
         );
     }
 }
