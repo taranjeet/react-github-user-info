@@ -67,10 +67,11 @@ class SearchForm extends Component {
                 </InputGroup>
             </Form>
             <UserCard
-                fullname={this.state.fullName}
+                fullName={this.state.fullName}
                 followers={this.state.followers}
                 following={this.state.following}
                 publicRepos={this.state.publicRepos}
+                avatarUrl={this.state.avatarUrl}
             />
             </div>
         );

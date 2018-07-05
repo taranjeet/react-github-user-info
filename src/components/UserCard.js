@@ -1,21 +1,37 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+  CardTitle, CardSubtitle, Button, Media } from 'reactstrap';
 
-const UserCard = ({fullName, publicRepos, followers, following}) => {
-    return (
-        <div>
-        <Card>
-        <CardBody>
-            <CardTitle>{fullName}</CardTitle>
-            <CardSubtitle>{publicRepos}</CardSubtitle>
-            <CardSubtitle>{followers}</CardSubtitle>
-            <CardSubtitle>{following}</CardSubtitle>
-        </CardBody>
-        </Card>
-    </div>
+const UserCard = ({fullName, publicRepos, followers, following, avatarUrl}) => {
+    if (fullName) {
+        return (
+            <div className="row">
+                <div className="col-8 offset-sm-2">
+                <Card>
+                <CardImg top width="100%" src={avatarUrl} alt={fullName} />
+                <CardBody>
+                    <CardTitle>{fullName}</CardTitle>
+                    <CardSubtitle>
+                        <div className="row">
+                            <div className="col-3">
+                            Public Repos : {publicRepos}
+                            </div>
+                            <div className="col-3">
+                            Followers : {followers}
+                            </div>
+                            <div className="col-3">
+                            Following : {following}
+                            </div>
+                        </div>
+                    </CardSubtitle>
+                </CardBody>
+                </Card>
+            </div>
+            </div>
 
-    );
+        );
+    }
+    return (<div className="row"></div>);
 }
 
 export { UserCard };
